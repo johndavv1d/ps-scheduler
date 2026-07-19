@@ -33,7 +33,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, tipo, isLoading 
           <input
             {...register('cpf')}
             className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-            placeholder={tipo === 'paciente' ? 'Digite seu Email' : 'Digite seu email'}
+            placeholder={tipo === 'paciente' ? 'Digite seu Email' : 'Digite seu Email'}
             disabled={isLoading}
           />
         </div>

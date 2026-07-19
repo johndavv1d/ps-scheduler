@@ -32,7 +32,7 @@ export const ConsultaCard: React.FC<ConsultaCardProps> = ({ consulta }) => {
           </span>
         </p>
         {consulta.parecer && (
-          <p className="mt-2 text-sm bg-gray-50 p-2 rounded">
+          <p className="mt-2 text-sm bg-gray-50 dark:bg-gray-800 p-2 rounded">
             <span className="font-semibold">Parecer:</span>{' '}
             {consulta.parecer}
           </p>

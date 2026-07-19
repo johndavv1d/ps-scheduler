@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { CadastroPsicologo } from '../../components/admin/CadastroPsicologo';
+import { CadastroPsicologoComponent } from '../../components/admin/CadastroPsicologo';
 import { CadastroPaciente } from '../../components/admin/CadastroPaciente';
 import { RemoverFicha } from '../../components/admin/RemoverFicha';
+import { EditarPerfil } from '../../components/common/EditarPerfil';
 
 export default function DashboardAdmin() {
   const { user } = useAuth();
@@ -10,12 +11,15 @@ export default function DashboardAdmin() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-gray-800 mb-2">
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
         Painel Administrativo 👑
       </h1>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 dark:text-gray-400 mb-4">
         Bem-vindo, {user?.nome}
       </p>
+      <div className="mb-6">
+        <EditarPerfil />
+      </div>
 
       <div className="border-b border-gray-200 mb-8">
         <nav className="flex space-x-8">
@@ -53,7 +57,7 @@ export default function DashboardAdmin() {
       </div>
 
       <div className="card">
-        {activeTab === 'psicologo' && <CadastroPsicologo />}
+        {activeTab === 'psicologo' && <CadastroPsicologoComponent />}
         {activeTab === 'paciente' && <CadastroPaciente />}
         {activeTab === 'remover' && <RemoverFicha />}
       </div>

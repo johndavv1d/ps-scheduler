@@ -1,6 +1,19 @@
 import { Request, Response } from 'express';
 import prisma from '../prisma';
 
+export const listarPsicologos = async (_req: Request, res: Response): Promise<void> => {
+  try {
+    const psicologos = await prisma.psicologo.findMany({
+      select: { id: true, nome: true, email: true, erp: true, horarios: true },
+      orderBy: { nome: 'asc' }
+    });
+
+    res.json(psicologos);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao listar psicólogos' });
+  }
+};
+
 export const criarConsulta = async (req: Request, res: Response): Promise<void> => {
   const { psicologoId, data } = req.body;
   const pacienteId = (req as any).user?.id;

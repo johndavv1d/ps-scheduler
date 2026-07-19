@@ -3,6 +3,9 @@ export interface User {
   nome: string;
   email: string;
   tipo: 'paciente' | 'psicologo' | 'admin';
+  telefone?: string;
+  empresa?: string;
+  horarios?: string;
 }
 
 export interface LoginCredentials {
@@ -37,6 +40,7 @@ export interface CadastroPsicologo {
   telefone: string;
   erp: string;
   senha: string;
+  horarios?: string[];
 }
 
 export interface CadastroPaciente {
@@ -45,6 +49,21 @@ export interface CadastroPaciente {
   telefone: string;
   empresa: string;
   senha: string;
+}
+
+export interface PacienteListItem {
+  id: number;
+  nome: string;
+  email: string;
+  empresa: string;
+}
+
+export interface PsicologoListItem {
+  id: number;
+  nome: string;
+  email: string;
+  erp: string;
+  horarios?: string;
 }
 
 export interface NovoAgendamento {
@@ -61,4 +80,12 @@ export interface EmailData {
   pacienteEmail: string;
   categoria: 'lembrete' | 'resultado' | 'outro';
   mensagem: string;
+}
+
+export interface AtualizarPerfilData {
+  nome?: string;
+  email?: string;
+  telefone?: string;
+  empresa?: string;
+  horarios?: string;
 }

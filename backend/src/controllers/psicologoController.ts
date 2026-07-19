@@ -32,7 +32,7 @@ export const darParecer = async (req: Request, res: Response): Promise<void> => 
   try {
     const consulta = await prisma.consulta.update({
       where: { id: Number(id) },
-      data: { parecer }
+      data: { parecer, status: 'REALIZADA' }
     });
 
     res.json(consulta);

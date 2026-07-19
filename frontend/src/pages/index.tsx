@@ -39,12 +39,12 @@ export default function Home() {
                 <span>Comece Agora</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button
-                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link
+                href="/sobre"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-700"
               >
                 <span>Conheça o Sistema</span>
-              </button>
+              </Link>
             </div>
 
             {/* Estatísticas */}

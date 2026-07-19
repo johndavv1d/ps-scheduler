@@ -1,7 +1,12 @@
 import api from './api';
-import { Consulta, NovoAgendamento } from '../types';
+import { Consulta, NovoAgendamento, PsicologoListItem } from '../types';
 
 export const pacienteService = {
+  async listarPsicologos(): Promise<PsicologoListItem[]> {
+    const { data } = await api.get<PsicologoListItem[]>('/paciente/psicologos');
+    return data;
+  },
+
   async getConsultas(): Promise<Consulta[]> {
     const { data } = await api.get<Consulta[]>('/paciente/consultas');
     return data;

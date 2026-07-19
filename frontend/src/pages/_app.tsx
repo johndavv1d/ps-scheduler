@@ -12,9 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <Header />
-          <main className="container mx-auto px-4 py-8 animate-fade-in">
-            <Component {...pageProps} />
-          </main>
+          <Component {...pageProps} />
         </div>
       </AuthProvider>
     </ThemeProvider>

@@ -5,6 +5,7 @@ import authRoutes from './routes/authRoutes';
 import psicologoRoutes from './routes/psicologoRoutes';
 import pacienteRoutes from './routes/pacienteRoutes';
 import adminRoutes from './routes/adminRoutes';
+import perfilRoutes from './routes/perfilRoutes';
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -21,6 +22,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/psicologo', psicologoRoutes);
 app.use('/api/paciente', pacienteRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/perfil', perfilRoutes);
 
 // Rota de teste
 app.get('/', (req, res) => {

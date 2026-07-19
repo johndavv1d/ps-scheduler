@@ -10,32 +10,33 @@ datasource db {
 
 model Admin {
   id        Int      @id @default(autoincrement())
-  nome      String   @default("Administrador")  // ADICIONE ESTA LINHA
+  nome      String   @default("Administrador")
   email     String   @unique
   senha     String
   createdAt DateTime @default(now())
 }
 
 model Psicologo {
-  id        Int      @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   nome      String
-  email     String   @unique
+  email     String      @unique
   telefone  String
-  erp       String   @unique
+  erp       String      @unique
   senha     String
+  horarios  String?     // JSON array: ["08:00","09:00",...]
   consultas Consulta[]
-  createdAt DateTime @default(now())
+  createdAt DateTime    @default(now())
 }
 
 model Paciente {
-  id        Int      @id @default(autoincrement())
+  id        Int         @id @default(autoincrement())
   nome      String
-  email     String   @unique
+  email     String      @unique
   telefone  String
   empresa   String
   senha     String
   consultas Consulta[]
-  createdAt DateTime @default(now())
+  createdAt DateTime    @default(now())
 }
 
 model Consulta {

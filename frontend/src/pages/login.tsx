@@ -7,7 +7,7 @@ import { User, Stethoscope, Shield, Sparkles } from 'lucide-react';
 
 export default function Login() {
   const { login, isLoading } = useAuth();
-  const [tipo, setTipo] = useState<'paciente' | 'psicologo' | 'admin'>('paciente');
+  const [tipo, setTipo] = useState<'paciente' | 'psicologo'>('paciente');
 
   const handleSubmit = async (data: LoginCredentials) => {
     try {
@@ -23,8 +23,6 @@ export default function Login() {
         return <User className="w-5 h-5" />;
       case 'psicologo':
         return <Stethoscope className="w-5 h-5" />;
-      case 'admin':
-        return <Shield className="w-5 h-5" />;
     }
   };
 
@@ -34,8 +32,6 @@ export default function Login() {
         return 'Área do Paciente';
       case 'psicologo':
         return 'Área do Psicólogo';
-      case 'admin':
-        return 'Área Administrativa';
     }
   };
 
@@ -55,11 +51,10 @@ export default function Login() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 mb-6">
+          <div className="grid grid-cols-2 gap-2 mb-6">
             {[
               { id: 'paciente' as const, label: 'Paciente', icon: <User className="w-4 h-4" /> },
               { id: 'psicologo' as const, label: 'Psicólogo', icon: <Stethoscope className="w-4 h-4" /> },
-              { id: 'admin' as const, label: 'Admin', icon: <Shield className="w-4 h-4" /> },
             ].map((option) => (
               <button
                 key={option.id}
@@ -86,10 +81,21 @@ export default function Login() {
             isLoading={isLoading}
           />
 
-          <div className="text-center mt-6">
-            <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline transition-colors">
-              Esqueci minha senha
-            </button>
+          <div className="text-center mt-6 space-y-2">
+            <div>
+              <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline transition-colors">
+                Esqueci minha senha
+              </button>
+            </div>
+            <div>
+              <a
+                href="/admin/login"
+                className="text-sm text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors flex items-center justify-center gap-1"
+              >
+                <Shield className="w-3 h-3" />
+                Acesso Administrativo
+              </a>
+            </div>
           </div>
         </div>
       </div>

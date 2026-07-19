@@ -21,7 +21,7 @@ export const MinhasConsultas: React.FC<MinhasConsultasProps> = ({ consultas, onU
   };
 
   if (consultas.length === 0) {
-    return <p className="text-gray-500 text-center py-4">Nenhuma consulta agendada</p>;
+    return <p className="text-gray-500 dark:text-gray-400 text-center py-4">Nenhuma consulta agendada</p>;
   }
 
   return (
@@ -48,7 +48,17 @@ export const MinhasConsultas: React.FC<MinhasConsultasProps> = ({ consultas, onU
                   {consulta.status}
                 </span>
               </p>
-              {consulta.parecer && (
+              {consulta.status === 'REALIZADA' && consulta.parecer && (
+                <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-1">
+                    📋 Parecer do Psicólogo
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap">
+                    {consulta.parecer}
+                  </p>
+                </div>
+              )}
+              {consulta.status !== 'REALIZADA' && consulta.parecer && (
                 <p className="mt-2 text-sm">
                   <span className="font-semibold">Parecer:</span>{' '}
                   {consulta.parecer}
