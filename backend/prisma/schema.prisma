@@ -1,0 +1,54 @@
+// backend/prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  nome      String   @default("Administrador")  // ADICIONE ESTA LINHA
+  email     String   @unique
+  senha     String
+  createdAt DateTime @default(now())
+}
+
+model Psicologo {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  telefone  String
+  erp       String   @unique
+  senha     String
+  consultas Consulta[]
+  createdAt DateTime @default(now())
+}
+
+model Paciente {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  telefone  String
+  empresa   String
+  senha     String
+  consultas Consulta[]
+  createdAt DateTime @default(now())
+}
+
+model Consulta {
+  id          Int      @id @default(autoincrement())
+  pacienteId  Int
+  psicologoId Int
+  data        DateTime
+  status      String   @default("AGENDADA")
+  parecer     String?
+  createdAt   DateTime @default(now())
+  paciente    Paciente @relation(fields: [pacienteId], references: [id])
+  psicologo   Psicologo @relation(fields: [psicologoId], references: [id])
+
+  @@index([pacienteId])
+  @@index([psicologoId])
+}
